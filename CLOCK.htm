@@ -1,0 +1,72 @@
+<html>
+<head>
+ <style type = "text/css">
+  body {background-color: black;
+	text-align:center;
+	font-family:serif;}
+
+       h1 {margin:0px;
+	color:white;
+	font-size:60px;
+}
+ #date
+{
+margin-top:70px;
+	color:red;
+	font-size:40px;
+	border:2px dashed #2E9AFE;
+	width:500px;
+	margin-left:500px;}
+
+#time
+{margin-top:20px;
+	font-size:130px;
+	color:red;
+	border:2px dashed #2E9AFE;
+	width:700px;
+	margin-left:400px;}
+  
+</style>
+
+<script>   // client-side script JS
+
+function clock() {
+
+var today = new Date();
+var date = today.getDate();
+
+var month = today.getMonth();
+var allmonths = ["Jan", "Feb","Mar","April","May","June","July","Aug","Sept","Oct", "Nov","Dec"];
+month = allmonths[month];
+
+var year = today.getFullYear();
+
+var day = today.getDay();
+var alldays = ["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
+day = alldays[day];
+
+var hour = today.getHours();
+var min = today.getMinutes();
+var sec = today.getSeconds();
+min = checktime(min);
+sec = checktime(sec);
+
+document.getElementById("date").innerHTML= day + "," + date + "/" + month + "/" + year;
+document.getElementById("time").innerHTML = hour + ":" + min + ":" + sec;
+var t = setTimeout(clock,1000);
+}
+
+function checktime(i) {
+if (i < 10) 
+{ i = "0" + i};  // add zero infront of numbers that is less than 10
+return i;
+}
+</script>
+</head>
+
+<body onload = clock() >
+<h1> Today's date and time : </h1> 
+<p id = "date"> </p> 
+<p id = "time"></p>
+</body>
+</html>
